@@ -5,19 +5,21 @@ import { createContext, useContext, useState } from 'react';
 
 export const ClimateContext = createContext();
 
-export const useClimate = useContext(ClimateContext)
+export const useClimate = () => useContext(ClimateContext);
 
-export default function climateProvider({children}) {
+export default function ClimateProvider({children}) {
     const [temp, setTemp] = useState(50);
+    const [humidity, setHumidity] = useState(40);
 
     return (
         <ClimateContext.Provider
         value={{
             temp,
-            setTemp
+            setTemp,
+            humidity,
+            setHumidity
         }}>
-            {children} Question for after lunch...Why is this here?
-            what is it doing and where does it come from?
+            {children} 
         </ClimateContext.Provider>
     )
 
